@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dataNodeList:
-  - m_position: {x: 89, y: 129}
+  - m_position: {x: 84, y: 55}
     m_size: {x: 150, y: 81}
     m_nodeType: 2
-    m_oldPosition: {x: 0, y: 0}
+    m_oldPosition: {x: 89, y: 129}
     m_onMouse: 0
-    m_mouseOffset: {x: 0, y: 0}
+    m_mouseOffset: {x: -70, y: -6}
     ID: 1
     m_textList:
-    - how, now?
+    - Welcome to DEW.
     m_nextIDs: ffffffff
     m_joiningID: -1
-    m_baseArrowPos: {x: 235, y: 158}
+    m_baseArrowPos: {x: 230, y: 84}
     m_baseArrowSpacing: 0
     m_name: Dialogue
     m_settingMode: 0
@@ -91,4 +91,4 @@ MonoBehaviour:
     m_name: Start Node
     m_settingMode: 0
     m_color: {r: 0, g: 0, b: 0, a: 0}
-  m_idOrder: 0100000000000000
+  m_idOrder: 0000000001000000
