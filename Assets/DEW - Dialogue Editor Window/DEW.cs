@@ -53,6 +53,8 @@ namespace LazuliSoftware
             //load data from DEW Data prefab
             string m_assetRoot = AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this));
             m_assetRoot = System.IO.Directory.GetParent(m_assetRoot).ToString();
+            int index = m_assetRoot.IndexOf(m_assetRoot.Contains("Assets/") ? "Assets/" : "Assets\\");
+            m_assetRoot = m_assetRoot.Substring(index);
             GameObject go = (GameObject)AssetDatabase.LoadAssetAtPath(m_assetRoot + "/DEW Data.prefab", typeof(GameObject));
             m_data = go.GetComponent<DEWData>();
 
