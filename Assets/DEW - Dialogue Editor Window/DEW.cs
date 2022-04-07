@@ -59,15 +59,15 @@ namespace LazuliSoftware
             m_data = go.GetComponent<DEWData>();
 
             m_colorPallete = new Color[] {//load settings from EditorPrefs
-            StrToColor(EditorPrefs.GetString("DEW_COL_HEAD", r_colHead.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_STRT", r_colStart.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_CHCE", r_colChoice.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_DLOG", r_colDialogue.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_EVNT", r_colEvent.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_OTLN", r_colOutline.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_ARRW", r_colArrow.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_AHED", r_colArrowHead.ToString())),
-            StrToColor(EditorPrefs.GetString("DEW_COL_TEXT", r_colText.ToString()))
+            StrToColor(EditorPrefs.GetString("DEW_COL_HEAD", r_colHead.ToString()), r_colHead),
+            StrToColor(EditorPrefs.GetString("DEW_COL_STRT", r_colStart.ToString()), r_colStart),
+            StrToColor(EditorPrefs.GetString("DEW_COL_CHCE", r_colChoice.ToString()), r_colChoice),
+            StrToColor(EditorPrefs.GetString("DEW_COL_DLOG", r_colDialogue.ToString()), r_colDialogue),
+            StrToColor(EditorPrefs.GetString("DEW_COL_EVNT", r_colEvent.ToString()), r_colEvent),
+            StrToColor(EditorPrefs.GetString("DEW_COL_OTLN", r_colOutline.ToString()), r_colOutline),
+            StrToColor(EditorPrefs.GetString("DEW_COL_ARRW", r_colArrow.ToString()), r_colArrow),
+            StrToColor(EditorPrefs.GetString("DEW_COL_AHED", r_colArrowHead.ToString()), r_colArrowHead),
+            StrToColor(EditorPrefs.GetString("DEW_COL_TEXT", r_colText.ToString()), r_colText)
             };
             m_settingClearStart = EditorPrefs.GetBool("DEW_BOOL_CLST", false);
             m_txtStyle = new GUIStyle();
@@ -1180,13 +1180,20 @@ namespace LazuliSoftware
             m_data.m_idOrder = null;
         }
 
-        static public Color StrToColor(string _str)
+        static public Color StrToColor(string _str, Color _default)
         {
             //used to get colors that are saved as strings in EditorPrefs.
-            float r = float.Parse(_str.Substring(5, 5));
-            float g = float.Parse(_str.Substring(12, 5));
-            float b = float.Parse(_str.Substring(19, 5));
-            return new Color(r, g, b);
+            try
+            {
+                float r = float.Parse(_str.Substring(5, 5));
+                float g = float.Parse(_str.Substring(12, 5));
+                float b = float.Parse(_str.Substring(19, 5));
+                return new Color(r, g, b);
+            }
+            catch
+            {
+                return _default;
+            }
         }
 
         Color GetTypeColor(NODETYPE _type)
